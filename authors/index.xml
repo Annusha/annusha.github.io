@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Anna Kukleva</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/akukleva.jpg</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title>Anna Kukleva</title>
+      <link>/authors/anna-kukleva/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/anna-kukleva/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ivan Laptev</title>
+      <link>/authors/ivan-laptev/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/ivan-laptev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Makarand Tapaswi</title>
+      <link>/authors/makarand-tapaswi/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/makarand-tapaswi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hafez Farazi</title>
+      <link>/authors/hafez-farazi/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/hafez-farazi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mohammad Asif Khan*</title>
+      <link>/authors/mohammad-asif-khan/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/mohammad-asif-khan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sven Behnke</title>
+      <link>/authors/sven-behnke/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/sven-behnke/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fadime Sener</title>
+      <link>/authors/fadime-sener/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/fadime-sener/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hilde Kuehne*</title>
+      <link>/authors/hilde-kuehne/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/hilde-kuehne/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jürgen Gall</title>
+      <link>/authors/jurgen-gall/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/jurgen-gall/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/akukleva/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/akukleva/</guid>
+      <description>&lt;p&gt;I am a first-year PhD student at 
+&lt;a href=&#34;https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computer Vision and Machine Learning department&lt;/a&gt; at 
+&lt;a href=&#34;https://www.mpi-inf.mpg.de/home/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Max Planck Institute for Informatics&lt;/a&gt; supervised by 
+&lt;a href=&#34;https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Bernt Shiele&lt;/a&gt;. My research interests focus on video understanding including unsupervised and semi-supervised learing of efficient representations using multiple modalities.&lt;/p&gt;
+&lt;p&gt;Previously, I spent half a year at 
+&lt;a href=&#34;https://www.di.ens.fr/willow/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WILLOW team&lt;/a&gt; in Inria Paris working on my master thesis on multi-modal understanding of social human behaviour from movies under the supervision of 
+&lt;a href=&#34;http://www.cs.toronto.edu/~makarand/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Makarand Tapaswi&lt;/a&gt; and 
+&lt;a href=&#34;https://www.di.ens.fr/~laptev/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ivan Laptev&lt;/a&gt;.
+During my master study at Uni Bonn, I was working as a research assistant on unsupervised video segmentation project at the Computer Vision Group under the supervision of 
+&lt;a href=&#34;https://hildekuehne.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hilde Kuehne&lt;/a&gt; and 
+&lt;a href=&#34;http://pages.iai.uni-bonn.de/gall_juergen/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Jürgen Gall&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks. --&gt;
+&lt;!--  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
