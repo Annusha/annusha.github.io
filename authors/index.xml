@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors | Anna Kukleva</title>
-    <link>/authors/</link>
-      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://annusha.github.io/authors/</link>
+      <atom:link href="https://annusha.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/akukleva.jpg</url>
+      <url>https://annusha.github.io/img/akukleva.jpg</url>
       <title>Authors</title>
-      <link>/authors/</link>
+      <link>https://annusha.github.io/authors/</link>
     </image>
     
     <item>
       <title>Anna Kukleva*</title>
-      <link>/authors/anna-kukleva/</link>
+      <link>https://annusha.github.io/authors/anna-kukleva/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/authors/anna-kukleva/</guid>
+      <guid>https://annusha.github.io/authors/anna-kukleva/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ivan Laptev</title>
-      <link>/authors/ivan-laptev/</link>
+      <link>https://annusha.github.io/authors/ivan-laptev/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/authors/ivan-laptev/</guid>
+      <guid>https://annusha.github.io/authors/ivan-laptev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Makarand Tapaswi</title>
-      <link>/authors/makarand-tapaswi/</link>
+      <link>https://annusha.github.io/authors/makarand-tapaswi/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/authors/makarand-tapaswi/</guid>
+      <guid>https://annusha.github.io/authors/makarand-tapaswi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hafez Farazi</title>
-      <link>/authors/hafez-farazi/</link>
+      <link>https://annusha.github.io/authors/hafez-farazi/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/hafez-farazi/</guid>
+      <guid>https://annusha.github.io/authors/hafez-farazi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mohammad Asif Khan*</title>
-      <link>/authors/mohammad-asif-khan/</link>
+      <link>https://annusha.github.io/authors/mohammad-asif-khan/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/mohammad-asif-khan/</guid>
+      <guid>https://annusha.github.io/authors/mohammad-asif-khan/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sven Behnke</title>
-      <link>/authors/sven-behnke/</link>
+      <link>https://annusha.github.io/authors/sven-behnke/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/sven-behnke/</guid>
+      <guid>https://annusha.github.io/authors/sven-behnke/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fadime Sener</title>
-      <link>/authors/fadime-sener/</link>
+      <link>https://annusha.github.io/authors/fadime-sener/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/fadime-sener/</guid>
+      <guid>https://annusha.github.io/authors/fadime-sener/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hilde Kuehne*</title>
-      <link>/authors/hilde-kuehne/</link>
+      <link>https://annusha.github.io/authors/hilde-kuehne/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/hilde-kuehne/</guid>
+      <guid>https://annusha.github.io/authors/hilde-kuehne/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jürgen Gall</title>
-      <link>/authors/jurgen-gall/</link>
+      <link>https://annusha.github.io/authors/jurgen-gall/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/jurgen-gall/</guid>
+      <guid>https://annusha.github.io/authors/jurgen-gall/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>/authors/akukleva/</link>
+      <link>https://annusha.github.io/authors/akukleva/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/authors/akukleva/</guid>
+      <guid>https://annusha.github.io/authors/akukleva/</guid>
       <description>&lt;p&gt;I am a first-year PhD student at 
 &lt;a href=&#34;https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computer Vision and Machine Learning department&lt;/a&gt; at 
 &lt;a href=&#34;https://www.mpi-inf.mpg.de/home/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Max Planck Institute for Informatics&lt;/a&gt; supervised by 
