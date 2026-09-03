@@ -103,14 +103,114 @@
 
 
     .news-scroll-box {
-      height: 300px;
-      overflow: auto;
-      background-color: #f7f5f5;
-      padding: 2px 10px 10px 10px;
+      max-height: 360px;
+      overflow-y: auto;
+      background-color: #faf9f9;
+      border: 1px solid #ececec;
+      border-radius: 8px;
+      padding: 4px 20px;
+      margin-top: 8px;
     }
-    
+
+    .news-scroll-box ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .news-scroll-box li {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 11px 2px;
+      line-height: 1.55;
+      border-bottom: 1px solid #ededed;
+    }
+
+    .news-scroll-box li:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      flex: 0 0 auto;
+      min-width: 46px;
+      margin-right: 14px;
+      font-weight: 700;
+      color: #555;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .news-scroll-box::-webkit-scrollbar {
+      width: 8px;
+    }
+    .news-scroll-box::-webkit-scrollbar-thumb {
+      background: #d5d5d5;
+      border-radius: 4px;
+    }
+    .news-scroll-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
     span.highlight {
       background-color: #CA7FD4;
+    }
+
+    /* --- Publications year headers --- */
+    .year-row {
+      padding: 20px 5px 2px 5px;
+    }
+    .year-label {
+      display: block;
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 4px;
+    }
+
+    /* --- Academic subsection labels --- */
+    .subsection {
+      display: block;
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #333;
+      margin: 18px 0 2px 0;
+    }
+    .subsection:first-of-type {
+      margin-top: 4px;
+    }
+
+    /* --- Sticky top nav (Option A) --- */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: saturate(180%) blur(6px);
+      -webkit-backdrop-filter: saturate(180%) blur(6px);
+      border-bottom: 1px solid #ececec;
+      text-align: center;
+      padding: 10px 8px;
+      margin-bottom: 6px;
+    }
+    .topnav a {
+      display: inline-block;
+      margin: 0 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: #333;
+    }
+    .topnav a:hover {
+      color: #af19bf;
+    }
+    /* keep anchored sections clear of the sticky bar */
+    heading, name {
+      scroll-margin-top: 64px;
+    }
+    @media (max-width: 520px) {
+      .topnav a { margin: 0 6px; font-size: 13px; }
     }
   </style>
 
@@ -118,6 +218,16 @@
 </head>
 
 <body>
+
+  <div class="topnav">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#talks">Talks</a>
+    <a href="#media">Media</a>
+    <a href="#academic">Academic</a>
+  </div>
+
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
@@ -125,7 +235,7 @@
           <tr style="padding:0px">
             <td style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:center">
-                <name>Anna Kukleva</name>
+                <a id="about"><name>Anna Kukleva</name></a>
               </p>
               <p style="text-align:justify">
               I’m a Research Scientist at Meta. Previously, I was a postdoc at <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/">MPII</a>, where I was involved in the <a href="https://www.via-center.science/">VIA Center</a>, a collaborative initiative with Google. I received my a PhD at <a href="https://www.mpi-inf.mpg.de/home/">Max Plank Institute for Informatics</a> under supervision of <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele/">Bernt Schiele</a> and was honored with <a href="https://www.mpi-inf.mpg.de/de/aktuelles/details/otto-hahn-medaille-fuer-anna-kukleva"> the Otto-Hahn-Medal</a> for an outstanding PhD thesis. During my PhD, my research involved close collaborations with <a href="https://hildekuehne.github.io/">Hilde Kuehne</a> (Tuebingen AI Center), and <a href="https://chrirupp.github.io/">Christian Rupprecht</a> (Oxford). I’ve visited Meta FAIR and FRL labs as research intern. Prior to my PhD, I had the opportunity to work in <a href="https://www.di.ens.fr/willow/">WILLOW team</a> at Inria Paris with <a href="https://makarandtapaswi.github.io/">Makarand Tapaswi</a> and <a href="https://www.di.ens.fr/~laptev/">Ivan Laptev</a>.  During my master, I’ve been working in Uni Bonn in the lab of <a href="https://pages.iai.uni-bonn.de/gall_juergen/">Jürgen Gall</a>.
@@ -156,141 +266,90 @@
 
         <!-- News -->
 <!--        <hr>-->
-        <table id="news" class="table" align="right" border="0" cellspacing="0" cellpadding="10">
-        <tr class="row">
-        <td class="cell">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr>
+        <td style="padding:0px;width:100%;vertical-align:middle">
         <a id="news"><heading>News</heading></a>
         <div class="news-scroll-box">
         <ul>
 
-            <li>
-               02/26: &nbsp &nbsp Started a new position as Research Scientist at Meta
-        </li>
-            <li>
-               12/25: &nbsp &nbsp Our workshop <a href="">"BigMAC"</a> is accepted to CVPR 2026! Stay tuned!
-        </li>
+        <!-- ITEM -->
+        <li><span class="news-date">09/26</span><span>Co-organizing the <a href="https://mllm-mucg.github.io/ECCV2026/">MUCG workshop</a> "Multimodal Large Language Models for Unified Comprehension and Generation" at ECCV 2026, Malmö</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">09/26</span><span>Giving a keynote at the <a href="https://sites.google.com/view/wicv-eccv-2026/">WiCV workshop</a> at ECCV 2026, Malmö</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">09/26</span><span>Invited talk at the <a href="https://eccv2026-limit-workshop.limitlab.xyz/">LIMIT workshop</a> "Representation Learning with Very Limited Resources" at ECCV 2026</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">09/26</span><span>I'll serve as Area Chair for ICLR 2027</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">08/26</span><span>3 papers accepted to TMLR — <a href="https://arxiv.org/abs/2509.22650">RefAM</a>, <a href="https://arxiv.org/abs/2507.00754">LUViT</a>, and <a href="https://arxiv.org/abs/2604.11170">SeSAM</a>!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">05/26</span><span>I'll serve as Area Chair for NeurIPS 2026</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/26</span><span>Started a new position as Research Scientist at Meta</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">12/25</span><span>Our workshop <a href="">"BigMAC"</a> is accepted to CVPR 2026! Stay tuned!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">12/25</span><span>1 paper accepted at WACV 2026 as oral! Thanks to Siarhei and Dhimitrios!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">11/25</span><span>Gave a <a href="https://www.youtube.com/watch?v=f-lmPdR7ASY">talk</a> about our RefAM paper at <a href="https://researchtrend.ai/social-events/researchtrend-connect-mondays-1">ResearchTrend.AI</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">11/25</span><span>I'll serve as Area Chair for ICML 2026</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">10/25</span><span>Visited <a href="https://vrg.fel.cvut.cz//">Visual Recognition Group (VRG)</a> and talked about "Unconventional LLM usage in vision tasks" at <a href="https://cmp.felk.cvut.cz/colloquium/#about">the 50th PRCVC</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">10/25</span><span><a href="https://www.nature.com/commseng/referees/reviewer-of-the-month">Reviewer of the Month</a> at Nature, Communications Engineering</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/25</span><span>Our workshop <a href="https://what-makes-good-video.github.io/">"NextVid"</a> is accepted to NeurIPS 2025! Stay tuned!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/25</span><span>I'll serve as Area Chair for WACV 2026</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">06/25</span><span>Honored to receive <a href="https://www.mpg.de/prizes/otto-hahn-medal">the Otto-Hahn-Medal</a> for my PhD thesis</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">04/25</span><span>I'll serve as Area Chair for NeurIPS 2025</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/25</span><span>2 papers accepted at CVPR 2025! Thanks to Felix, <a href="https://phflot.github.io/">Philipp</a>, and <a href="https://scholar.google.com/citations?user=2TTrhm0AAAAJ&hl=en">Moritz</a>!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/25</span><span>I'll serve as Doctoral Consortium Chair for ICCV 2025</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/25</span><span>Our workshop <a href="https://sites.google.com/view/mmfm3rdworkshop">"What is Next in Multimodal Foundation Models?"</a> is accepted to CVPR25! Stay tuned!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/25</span><span>Visited <a href="https://fundamentalailab.github.io/">FunAI group</a> and talked about "Advancing Video Recognition with Less Supervision"</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">08/24</span><span>Gave Research Spotlight Talk at <a href="https://www.gcpr-vmv.de/year/2024/program/conference-program">GCPR 2024</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">08/24</span><span><a href="images/phd.jpg">Defended my PhD! 🎉 👩‍🎓</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/24</span><span><a href="https://ninatu.github.io/">Nina</a> and I talk about HowToCaption, watch here <a href="https://www.youtube.com/watch?v=-_65pn8rcvg">Twelve Labs</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/24</span><span>Gave a talk on learning with less supervision at <a href="https://sprintml.com/">SprintML, CISPA</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/24</span><span>1 paper accepted at ECCV 2024!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">06/24</span><span>I'll serve as Area Chair for WACV 2025</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">06/24</span><span>Top reviewer at CVPR 2024</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">03/24</span><span>Got accepted to <a href="https://cvpr2023.thecvf.com/Conferences/2024/CallForDoctoralConsortium">Doctoral Consortium</a> at CVPR24</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">03/24</span><span>Gave a talk on learning with less supervision at <a href="https://www.robots.ox.ac.uk/~vgg/">VGG Reading Group, Oxford</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">03/24</span><span>Gave a talk on learning with less supervision at <a href="https://www.uni-siegen.de/zess/kombibox/zess-lecture-series-visual-computing.html">University of Siegen</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/24</span><span>2 papers accepted at CVPR 2024!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">12/23</span><span>Our workshop <a href="https://sites.google.com/view/lpvl-cvpr2024">"LPVL"</a> is accepted to CVPR24! Stay tuned!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">11/23</span><span>Top reviewer at NeurIPS 2023</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">08/23</span><span>Served as Area Chair for WACV 2024</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">07/23</span><span>3 papers accepted at ICCV 2023!</span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">05/23</span><span>Joined Meta FRL as a research intern. Working with <a href="https://scholar.google.com/citations?user=-juoweoAAAAJ&hl">Fadime Sener</a></span></li>
+        <!-- ITEM -->
+        <li><span class="news-date">02/23</span><span>Top reviewer at AISTAT 2023</span></li>
 
-        <li>
-            12/25: &nbsp &nbsp
-            1 paper accepted at WACV 2026 as oral! Thanks to Siarhei and Dhimitrios!
-        </li>
-            <li>
-               11/25: &nbsp &nbsp Gave a <a href="https://www.youtube.com/watch?v=f-lmPdR7ASY">talk</a> about our RefAM paper at <a href="https://researchtrend.ai/social-events/researchtrend-connect-mondays-1">ResearchTrend.AI </a>
-       </li>
-<!--            <br>-->
-        <li>
-            11/25: &nbsp &nbsp
-            I'll serve as Area Chair for ICML 2026
-        </li>
-        <!-- ITEM -->
-        <li>
-               10/25: &nbsp &nbsp Visited <a href="https://vrg.fel.cvut.cz//"> Visual Recognition Group (VRG) </a> and talked about  "Unconventional LLM usage in vision tasks" at <a href="https://cmp.felk.cvut.cz/colloquium/#about"> the 50th PRCVC </a>
-        </li>
-          <!-- ITEM -->
-        <li>
-               10/25: &nbsp &nbsp <a href="https://www.nature.com/commseng/referees/reviewer-of-the-month">Reviewer of the Month</a> at Nature, Communications Engineering
-      </li>
-          <!-- ITEM -->
-        <li>
-               07/25: &nbsp &nbsp Our workshop <a href="https://what-makes-good-video.github.io/">"NextVid"</a> is accepted to NeurIPS 2025! Stay tuned!
-      </li>
-          <!-- ITEM -->
-        <li>
-               07/25: &nbsp &nbsp I'll serve as Area Chair for WACV 2026
-          </li>
-        <li>
-               06/25: &nbsp &nbsp Honorod to receive <a href="https://www.mpg.de/prizes/otto-hahn-medal"> the Otto-Hahn-Medal</a> for my PhD thesis
-          </li>
-        <li>
-               04/25: &nbsp &nbsp I'll serve as Area Chair for NeurIPS 2025
-          </li>
-         <!-- ITEM -->
-        <li>
-               02/25: &nbsp &nbsp 2 papers accepted at CVPR 2025! Thanks to Felix, <a href="https://phflot.github.io/">Philipp</a>, and  <a href="https://scholar.google.com/citations?user=2TTrhm0AAAAJ&hl=en">Moritz</a>!
-          </li>
-         <!-- ITEM -->
-        <li>
-               02/25: &nbsp &nbsp I'll serve as Doctoral Consortium Chair for ICCV 2025
-          </li>
-         <!-- ITEM -->
-        <li>
-               02/25: &nbsp &nbsp Our workshop <a href="https://sites.google.com/view/mmfm3rdworkshop">"What is Next in Multimodal Foundation Models?"</a> is accepted to CVPR25! Stay tuned!
-          </li>
-          <!-- ITEM -->
-        <li>
-               02/25: &nbsp &nbsp Visited <a href="https://fundamentalailab.github.io/"> FunAI group </a> and talked about  "Advancing Video Recognition with Less Supervision" </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               08/24: &nbsp &nbsp Gave Research Spotlight Talk at  <a href="https://www.gcpr-vmv.de/year/2024/program/conference-program"> GCPR 2024 </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               08/24: &nbsp &nbsp  <a href="images/phd.jpg"> Defended my PhD! 🎉 👩‍🎓 </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               07/24: &nbsp &nbsp <a href="https://ninatu.github.io/">Nina</a> and I talk about HowToCaption, watch here  <a href="https://www.youtube.com/watch?v=-_65pn8rcvg">Twelve Labs </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               07/24: &nbsp &nbsp Gave a talk on learning with less supervision at <a href="https://sprintml.com/">SprintML, CISPA </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               07/24: &nbsp &nbsp 1 paper accepted at ECCV 2024!
-          </li>
-        <!-- ITEM -->
-        <li>
-               06/24: &nbsp &nbsp I'll serve as Area Chair for WACV 2025
-          </li>
-        <!-- ITEM -->
-        <li>
-               06/24: &nbsp &nbsp Top reviewer at CVPR 2024
-          </li>
-        <!-- ITEM -->
-        <li>
-                03/24: &nbsp &nbsp Got accepted to  <a href="https://cvpr2023.thecvf.com/Conferences/2024/CallForDoctoralConsortium"> Doctoral Consortium </a> at CVPR24
-          </li>
-        <!-- ITEM -->
-        <!-- ITEM -->
-        <li>
-                03/24: &nbsp &nbsp Gave a talk on learning with less supervision at <a href="https://www.robots.ox.ac.uk/~vgg/">VGG Reading Group, Oxford </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-                03/24: &nbsp &nbsp Gave a talk on learning with less supervision at <a href="https://www.uni-siegen.de/zess/kombibox/zess-lecture-series-visual-computing.html">University of Siegen </a>
-          </li>
-        <!-- ITEM -->
-        <li>
-               02/24: &nbsp &nbsp 2 papers accepted at CVPR 2024!
-          </li>
-        <!-- ITEM -->
-        <li>
-               12/23: &nbsp &nbsp Our workshop <a href="https://sites.google.com/view/lpvl-cvpr2024">"LPVL"</a> is accepted to CVPR24! Stay tuned!
-          </li>
-          <!-- ITEM -->
-        <li>
-               11/23: &nbsp &nbsp Top reviewer at NeurIPS 2023
-          </li>
-          <!-- ITEM -->
-        <li>
-               08/23: &nbsp &nbsp Served as Area Chair for WACV 2024
-          </li>
-          <!-- ITEM -->
-        <li>
-               07/23: &nbsp &nbsp 3 papers accepted at ICCV 2023!
-          </li>
-          <!-- ITEM -->
-        <li>
-               05/23: &nbsp &nbsp Joined Meta FRL as a research intern. Working with <a href="https://scholar.google.com/citations?user=-juoweoAAAAJ&hl">Fadime Sener</a>
-          </li>
-          <!-- ITEM -->
-          <li>
-              02/23: &nbsp &nbsp Top reviewer at AISTAT 2023
-          </li>
-
-          <!-- ITEM -->
         </ul>
         </div>
         </td>
@@ -302,13 +361,57 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <a id="news"><heading>Publications</heading></a>
+              <a id="publications"><heading>Publications</heading></a>
             </td>
           </tr>
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <!-- ITEM -->
+
+        <!-- ===================== 2026 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2026</span></td></tr>
+
+        <!-- ITEM: SeSAM (NEW) -->
+        <tr>
+            <td style="padding:5px;width:40%;vertical-align:middle">
+              <div style="text-align: center">
+              <!-- TODO: replace images/placeholder.png with the SeSAM thumbnail -->
+              <img src="images/sesam.png" alt="SeSAM" width="240" height="100" class="center">
+              </div>
+            </td>
+            <td width="75%" valign="middle">
+                <br>
+                 <a href="https://arxiv.org/pdf/2604.11170"> <papertitle>Do Instance Priors Help Weakly Supervised Semantic Segmentation?</papertitle></a>
+            <br>
+            <a href="https://anurag-198.github.io/">Anurag Das</a>, <b>Anna Kukleva</b>, Xinting Hu, <a href="https://yukimasano.github.io/">Yuki M. Asano</a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
+            <br>
+            <em>TMLR, 2026</em>
+        <p> <a href="https://arxiv.org/pdf/2604.11170">Paper</a>
+            <br><br>
+            </td>
+          </tr>
+
+        <!-- ITEM: TTA-Vid (NEW) -->
+        <tr>
+            <td style="padding:5px;width:40%;vertical-align:middle">
+              <div style="text-align: center">
+              <!-- TODO: replace images/placeholder.png with the TTA-Vid thumbnail -->
+              <img src="images/tta-vid.png" alt="TTA-Vid" width="240" height="100" class="center">
+              </div>
+            </td>
+            <td width="75%" valign="middle">
+                <br>
+                 <a href="https://arxiv.org/pdf/2604.00696"> <papertitle>TTA-Vid: Generalized Test-Time Adaptation for Video Reasoning</papertitle></a>
+            <br>
+            <a href="https://soumyasj.github.io/">Soumya Shamarao Jahagirdar</a>, <a href="https://edsonroteia.github.io/">Edson Araujo</a>, <b>Anna Kukleva</b>, <a href="https://jmiemirza.github.io/">M. Jehanzeb Mirza</a>, Saurabhchand Bhati, Samuel Thomas, Brian Kingsbury, <a href="https://www.rogerioferis.org/">Rogerio Feris</a>, James R. Glass, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>
+            <br>
+            <em>preprint, arxiv 2026</em>
+        <p> <a href="https://arxiv.org/pdf/2604.00696">Paper</a>
+            <br><br>
+            </td>
+          </tr>
+
+        <!-- ITEM: MM-TS -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -317,21 +420,37 @@
             </td>
             <td width="75%" valign="middle">
                 <br>
-                 <a href=""> <papertitle>MM-TS: Multi-Modal Temperature and Margin Schedules for Contrastive Learning with Long-Tail Data</papertitle></a>
+                 <a href="https://arxiv.org/abs/2603.08202"> <papertitle>MM-TS: Multi-Modal Temperature and Margin Schedules for Contrastive Learning with Long-Tail Data</papertitle></a>
             <br>
             <a href="https://de.linkedin.com/in/siarhei-sheludzko-a25a0618a">Siarhei Sheludzko</a>, <a href="https://de.linkedin.com/in/dhimitriosduka">Dhimitrios Duka</a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>, <b>Anna Kukleva</b>
             <br>
             <em>WACV, 2026 <strong style="color:red;"> (Oral) </strong></em>
-
-<!--        <p> <a href="">Paper</a>-->
+        <p> <a href="https://arxiv.org/abs/2603.08202">Paper</a>
             <br><br>
             </td>
           </tr>
-        <!-- ITEM -->
 
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <!-- ITEM -->
+        <!-- ITEM: Mask-LLaVA (NEW) -->
+        <tr>
+            <td style="padding:5px;width:40%;vertical-align:middle">
+              <div style="text-align: center">
+              <!-- TODO: replace images/placeholder.png with the Mask-LLaVA thumbnail -->
+              <img src="images/mask-llava.png" alt="Mask-LLaVA" width="240" height="100" class="center">
+              </div>
+            </td>
+            <td width="75%" valign="middle">
+                <br>
+                 <a href="https://arxiv.org/pdf/2602.04864"> <papertitle>When LLaVA Meets Objects: Token Composition for Vision-Language-Models</papertitle></a>
+            <br>
+            <a href="https://soumyasj.github.io/">Soumya Jahagirdar</a>, <a href="https://walidbousselham.com/">Walid Bousselham</a>, <b>Anna Kukleva</b>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>
+            <br>
+            <em>preprint, arxiv 2026</em>
+        <p> <a href="https://arxiv.org/pdf/2602.04864">Paper</a>
+            <br><br>
+            </td>
+          </tr>
+
+        <!-- ITEM: RefAM -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -346,16 +465,13 @@
             <br>
             (*equal contribution)
             <br>
-            <em>preprint, arxiv 2025</em>
-
-        <p> <a href="https://arxiv.org/pdf/2509.22650">Paper</a> | <a href="https://github.com/Annusha/refam">Code</a>
+            <em>TMLR, 2026</em>
+        <p> <a href="https://arxiv.org/pdf/2509.22650">Paper</a> | <a href="https://github.com/Annusha/refam">Code</a> | <a href="https://refam-diffusion.github.io/">Project</a>
             <br><br>
             </td>
           </tr>
 
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <!-- ITEM -->
+        <!-- ITEM: LUViT -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -368,13 +484,16 @@
             <br>
             <a href="https://selimkuzucu.github.io/about/">Selim Kuzucu</a>, <a href="https://ferjad.github.io/">Muhammad Ferjad Naeem</a>,  <b>Anna Kukleva</b>, <a href="https://federicotombari.github.io/">Federico Tombari</a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
             <br>
-            <em>preprint, arxiv 2025</em>
-
+            <em>TMLR, 2026</em>
         <p> <a href="https://arxiv.org/pdf/2507.00754">Paper</a>
             <br><br>
             </td>
           </tr>
-        <!-- ITEM -->
+
+        <!-- ===================== 2025 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2025</span></td></tr>
+
+        <!-- ITEM: T-FAKE -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -390,12 +509,12 @@
             (*equal contribution)
             <br>
             <em>CVPR, 2025</em>
-
         <p> <a href="https://arxiv.org/pdf/2408.15127">Paper</a> | <a href="https://github.com/phflot/tfake">Dataset</a>
             <br><br>
             </td>
           </tr>
-        <!-- ITEM -->
+
+        <!-- ITEM: VideoGEM -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -409,12 +528,15 @@
             Felix Vogel, <a href="https://walidbousselham.com/">Walid Bousselham</a>, <b>Anna Kukleva</b>, <a href="https://ninatu.github.io/">Nina Shvetsova</a>,  <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>
             <br>
             <em>CVPR, 2025</em>
-
         <p> <a href="https://arxiv.org/abs/2503.20348">Paper</a>    | <a href="https://github.com/felixVogel02/VideoGEM">Code</a>
             <br><br>
             </td>
           </tr>
-        <!-- ITEM -->
+
+        <!-- ===================== 2024 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2024</span></td></tr>
+
+        <!-- ITEM: HowToCaption -->
         <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -430,12 +552,12 @@
             (*equal contribution)
             <br>
             <em>ECCV, 2024</em>
-
         <p> <a href="https://arxiv.org/pdf/2310.04900.pdf">Paper</a> | <a href="https://github.com/ninatu/howtocaption">Code</a>
             <br><br>
             </td>
           </tr>
-<!-- ITEM -->
+
+        <!-- ITEM: X-MIC -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -444,17 +566,17 @@
             </td>
             <td width="75%" valign="middle">
                 <br>
-                 <a href=""> <papertitle>X-MIC: Cross-Modal Instance Conditioning for Egocentric Action Generalization</papertitle></a>
+                 <a href="https://arxiv.org/pdf/2403.19811v1.pdf"> <papertitle>X-MIC: Cross-Modal Instance Conditioning for Egocentric Action Generalization</papertitle></a>
             <br>
                 <b>Anna Kukleva</b>, <a href="https://scholar.google.com/citations?user=-juoweoAAAAJ&hl">Fadime Sener</a>, <a href="https://scholar.google.com/citations?user=yz2P_aUAAAAJ&hl=en">Edoardo Remelli</a>, <a href="https://btekin.github.io/">Bugra Tekin</a>, <a href="https://scholar.google.com/citations?user=HDYUYvwAAAAJ&hl=en">Eric Sauser </a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>, <a href="https://shugaoma.github.io/">Shugao Ma</a>
             <br>
             <em>CVPR, 2024</em>
-
         <p> <a href="https://arxiv.org/pdf/2403.19811v1.pdf">Paper</a>  | <a href="https://github.com/Annusha/xmic">Code</a>
             <br><br>
             </td>
           </tr>
-          <!-- ITEM -->
+
+        <!-- ITEM: OrCo -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -470,13 +592,15 @@
             (*equal contribution)
             <br>
             <em>CVPR, 2024  <strong style="color:red;"> (Highlight) </strong> </em>
-
         <p> <a href="https://arxiv.org/pdf/2403.18550.pdf">Paper</a> | <a href="https://github.com/noorahmedds/OrCo">Code</a>
             <br><br>
             </td>
           </tr>
-          <!-- ITEM -->
 
+        <!-- ===================== 2023 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2023</span></td></tr>
+
+        <!-- ITEM: In-Style -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -492,14 +616,12 @@
                         (*equal contribution)
             <br>
             <em>ICCV, 2023</em>
-
         <p> <a href="https://arxiv.org/pdf/2309.08928.pdf">Paper</a> | <a href="https://github.com/ninatu/in_style">Code</a>
             <br><br>
             </td>
           </tr>
 
-
-
+        <!-- ITEM: SSB -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -513,13 +635,12 @@
             <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/yue-fan">Yue Fan</a>, <b>Anna Kukleva</b>, <a href="https://vas.mpi-inf.mpg.de/dengxin/">Dengxin Dai</a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
             <br>
             <em>ICCV, 2023</em>
-
         <p> <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Fan_SSB_Simple_but_Strong_Baseline_for_Boosting_Performance_of_Open-Set_ICCV_2023_paper.pdf">Paper</a> | <a href="https://github.com/YUE-FAN/SSB">Code</a>
             <br><br>
             </td>
           </tr>
 
-
+        <!-- ITEM: Learning by Sorting -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -533,12 +654,12 @@
             <a href="https://ninatu.github.io/">Nina Shvetsova</a>, <a href="https://petersen.ai/">Felix Petersen</a>, <b>Anna Kukleva</b>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>
             <br>
             <em>ICCV, 2023</em>
-
         <p> <a href="https://arxiv.org/abs/2301.02009">Paper</a>
             <br><br>
             </td>
           </tr>
 
+        <!-- ITEM: Revisiting Consistency Regularization -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -552,14 +673,12 @@
              <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/yue-fan">Yue Fan</a>, <b>Anna Kukleva</b>,  <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
             <br>
             <em>IJCV, 2023</em>
-
-                <p> <a href="https://arxiv.org/pdf/2112.05825.pdf">Paper</a>
+        <p> <a href="https://arxiv.org/pdf/2112.05825.pdf">Paper</a>
             <br><br>
             </td>
           </tr>
 
-
-
+        <!-- ITEM: Temperature Schedules -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -575,12 +694,34 @@
                         (*equal contribution)
             <br>
             <em>ICLR, 2023</em>
-
         <p> <a href="https://openreview.net/pdf?id=ejHUr4nfHhD">Paper</a> | <a href="https://github.com/Annusha/temperature_schedules">Code</a>
             <br><br>
             </td>
           </tr>
 
+        <!-- ITEM: TAEC -->
+            <tr>
+            <td style="padding:5px;width:40%;vertical-align:middle">
+              <div style="text-align: center">
+              <img src="images/TAEC.png" alt="taec" width="240" height="100" class="center">
+              </div>
+            </td>
+            <td width="75%" valign="middle">
+                <br>
+                 <a href="https://arxiv.org/abs/2303.05166"> <papertitle>TAEC: Unsupervised Action Segmentation with Temporal-Aware Embedding and Clustering</papertitle></a>
+            <br>
+             <a href="https://wlin-at.github.io/">Wei Lin</a>, <b>Anna Kukleva</b>, <a href="https://snototter.github.io/research/">Horst Possegger</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>, <a href="https://www.tugraz.at/institute/icg/research/team-bischof/people/team-about/horst-bischof">Horst Bischof</a>
+            <br>
+            <em>CEUR Workshop, 2023 </em>
+        <p> <a href="https://arxiv.org/abs/2303.05166">Paper</a>
+            <br><br>
+            </td>
+          </tr>
+
+        <!-- ===================== 2022 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2022</span></td></tr>
+
+        <!-- ITEM: Unintentional Action Recognition -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -595,15 +736,13 @@
             <br>
                         (*equal contribution)
             <br>
-
             <em>ECCVW, 2022</em>
-
         <p> <a href="https://arxiv.org/pdf/2209.11870.pdf">Paper</a> | <a href="https://github.com/dukaenea/unintentional_actions">Code</a>
             <br><br>
             </td>
           </tr>
 
-
+        <!-- ITEM: CycDA -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -617,32 +756,12 @@
             <a href="https://wlin-at.github.io/">Wei Lin</a>, <b>Anna Kukleva</b>, <a href="https://www.researchgate.net/profile/Kunyang-Sun"> Kunyang Sun</a>, <a href="https://snototter.github.io/research/">Horst Possegger</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>, <a href="https://www.tugraz.at/institute/icg/research/team-bischof/people/team-about/horst-bischof">Horst Bischof</a>
             <br>
             <em>ECCV, 2022</em>
-
         <p> <a href="https://arxiv.org/pdf/2203.16244.pdf">Paper</a>
             <br><br>
             </td>
           </tr>
 
-            <tr>
-            <td style="padding:5px;width:40%;vertical-align:middle">
-              <div style="text-align: center">
-              <img src="images/TAEC.png" alt="taec" width="240" height="100" class="center">
-              </div>
-            </td>
-            <td width="75%" valign="middle">
-                <br>
-                 <a href="https://arxiv.org/abs/2303.05166"> <papertitle>TAEC: Unsupervised Action Segmentation with Temporal-Aware Embedding and Clustering</papertitle></a>
-            <br>
-             <a href="https://wlin-at.github.io/">Wei Lin</a>, <b>Anna Kukleva</b>, <a href="https://snototter.github.io/research/">Horst Possegger</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>, <a href="https://www.tugraz.at/institute/icg/research/team-bischof/people/team-about/horst-bischof">Horst Bischof</a>
-            <br>
-            <em>CEUR Workshop, 2023 </em>
-
-        <p> <a href="https://arxiv.org/abs/2303.05166">Paper</a> 
-            <br><br>
-            </td>
-          </tr>
-
-
+        <!-- ITEM: CoSSL -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -656,13 +775,15 @@
             <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/yue-fan">Yue Fan</a>, <a href="https://vas.mpi-inf.mpg.de/dengxin/">Dengxin Dai</a>, <b>Anna Kukleva</b>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
             <br>
             <em>CVPR, 2022</em>
-
         <p> <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Fan_CoSSL_Co-Learning_of_Representation_and_Classifier_for_Imbalanced_Semi-Supervised_Learning_CVPR_2022_paper.pdf">Paper</a> | <a href="https://github.com/YUE-FAN/CoSSL">Code</a>
             <br><br>
             </td>
           </tr>
 
+        <!-- ===================== 2021 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2021</span></td></tr>
 
+        <!-- ITEM: Generalized and Incremental Few-Shot Learning -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -676,13 +797,12 @@
              <b>Anna Kukleva</b>, Hilde Kuehne,  Bernt Schiele
             <br>
             <em>ICCV, 2021</em>
-
         <p> <a href="https://arxiv.org/pdf/2108.08165.pdf">Paper</a> | <a href="https://github.com/Annusha/LCwoF">Code</a>
             <br><br>
             </td>
           </tr>
 
-
+        <!-- ITEM: Joint Visual-Temporal Embedding -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -696,13 +816,15 @@
                 <a href="https://www.rvidal.me/">Rosaura G. VidalMata</a>, <a href="https://www.wjscheirer.com/">Walter J. Scheirer</a>, <b>Anna Kukleva</b>, <a href="https://mitibmwatsonailab.mit.edu/people/david-cox/">David Cox</a>, <a href="https://hildekuehne.github.io/">Hilde Kuehne</a>
             <br>
             <em>WACV, 2021</em>
-
         <p> <a href="https://openaccess.thecvf.com/content/WACV2021/papers/VidalMata_Joint_Visual-Temporal_Embedding_for_Unsupervised_Learning_of_Actions_in_Untrimmed_WACV_2021_paper.pdf">Paper</a>
             <br><br>
             </td>
           </tr>
 
+        <!-- ===================== 2020 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2020</span></td></tr>
 
+        <!-- ITEM: Learning Interactions -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -711,19 +833,20 @@
             </td>
             <td width="75%" valign="middle">
                 <br>
-                 <a href="https://arxiv.org/pdf/2003.13158.pd"> <papertitle>Learning Interactions and Relationships between Movie Characters</papertitle></a>
+                 <a href="https://arxiv.org/pdf/2003.13158.pdf"> <papertitle>Learning Interactions and Relationships between Movie Characters</papertitle></a>
             <br>
              <b>Anna Kukleva</b>, <a href="https://makarandtapaswi.github.io/"> Makarand Tapaswi</a>,  <a href="https://www.di.ens.fr/~laptev/"> Ivan Laptev</a>
             <br>
             <em>CVPR, 2020 <strong style="color:red;"> (Oral) </strong></em>
-
         <p> <a href="https://arxiv.org/pdf/2003.13158.pdf">Paper</a> | <a href="https://annusha.github.io/LIReC/">Code</a>
             <br><br>
             </td>
           </tr>
 
+        <!-- ===================== 2019 ===================== -->
+        <tr><td colspan="2" class="year-row"><span class="year-label">2019</span></td></tr>
 
-
+        <!-- ITEM: Soccer Ball -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -739,13 +862,12 @@
                             (*equal contribution)
             <br>
             <em>RoboCup, 2019  <strong style="color:red;"> (Oral) </strong></em>
-
         <p> <a href="https://2019.robocup.org/downloads/program/KuklevaEtAl2019.pdf">Paper</a> | <a href="https://github.com/AIS-Bonn/TemporalBallDetection">Code</a>
             <br><br>
             </td>
           </tr>
 
-
+        <!-- ITEM: Unsupervised Learning of Action Classes -->
           <tr>
             <td style="padding:5px;width:40%;vertical-align:middle">
               <div style="text-align: center">
@@ -761,12 +883,9 @@
                 (*equal contribution)
             <br>
             <em>CVPR, 2019 </em>
-
         <p> <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Kukleva_Unsupervised_Learning_of_Action_Classes_With_Continuous_Temporal_Embedding_CVPR_2019_paper.pdf">Paper</a> | <a href="https://github.com/Annusha/unsup_temp_embed">Code</a>
             </td>
           </tr>
-
-
 
         </tbody></table>
 
@@ -775,13 +894,19 @@
         <table width="100%" align="center" border="0" cellpadding="0">
           <tr style="padding:0px">
             <td width="100%" valign="middle">
-              <a id="news"><heading>Talks</heading></a>
+              <a id="talks"><heading>Talks</heading></a>
             </td>
           </tr>
           <tr>
             <td width="75%" valign="center">
               <p>
               <ul>
+                <li>
+               09/2026: Keynote at the <a href="https://sites.google.com/view/wicv-eccv-2026/">WiCV workshop</a> at ECCV 2026, Malmö, Sweden
+                </li>
+                <li>
+               09/2026: Invited talk at the <a href="https://eccv2026-limit-workshop.limitlab.xyz/">LIMIT workshop</a> "Representation Learning with Very Limited Resources" at ECCV 2026, Malmö, Sweden
+                </li>
                 <li>
                11/2025: <a href="https://www.youtube.com/watch?v=f-lmPdR7ASY">Talk</a> about our RefAM paper at <a href="https://researchtrend.ai/social-events/researchtrend-connect-mondays-1">ResearchTrend.AI </a>
                 </li>
@@ -841,7 +966,7 @@
         <table width="100%" align="center" border="0" cellpadding="0">
           <tr style="padding:0px">
             <td width="100%" valign="middle">
-              <a id="news"><heading>Academic</heading></a>
+              <a id="media"><heading>Media</heading></a>
             </td>
           </tr>
           <tr>
@@ -849,40 +974,76 @@
               <p>
               <ul>
                 <li>
-                  Doctoral Consortium Chair: ICCV 2025
+                  08/2026: Interview at <a href="https://saarland-informatics-campus.de/en/piece-of-news/interview-with-anna-kukleva-winning-the-otto-hahn-medal-phd-to-postdoc-and-her-research-in-computer-vision/">Saarland Informatics Campus</a>: "From PhD to Postdoc, Winning the Otto Hahn Medal, and Her Research in Computer Vision"
                 </li>
                 <li>
-                  Area Chair: WACV24-26, NeurIPS25, ICML26
+                  06/2025: <a href="https://www.mpi-inf.mpg.de/de/aktuelles/details/otto-hahn-medaille-fuer-anna-kukleva">Otto-Hahn-Medal announcement</a>, Max Planck Institute for Informatics
+                </li>
+              </ul>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+
+        <br>
+        <table width="100%" align="center" border="0" cellpadding="0">
+          <tr style="padding:0px">
+            <td width="100%" valign="middle">
+              <a id="academic"><heading>Academic</heading></a>
+            </td>
+          </tr>
+          <tr>
+            <td width="75%" valign="center">
+              <p>
+              <span class="subsection">Reviewing</span>
+              <ul>
+                <li>
+                  Area Chair: WACV24-26, NeurIPS25-26, ICML26, ICLR27
                 </li>
                 <li>
-                    Top Reviewer: AISTAT23, NeurIPS23, CVPR24
+                  Reviewer: CVPR21-26 (w/o 25), ICCV21-23, ECCV22-24, AISTAT23, NeurIPS23-24, ICML25, WACV21-22, PAMI, IJCV, TMM, ACMMM21, Nature CommsEng
                 </li>
-                <li>
-                  Reviewer: CVPR21-26 (w/o 25), ICCV21-23, ECCV22-24, AISTAT23, NeurIPS23-24, ICML25, WACV21-22, PAMI, IJCV, TMM, ACMMM21, Nature Commseng
-                </li>
-                <li>
-                    10/2025: Reviewer of the Month: <a href="https://www.nature.com/commseng/referees/reviewer-of-the-month">Nature CommsEng</a>
-                </li>
+              </ul>
+
+              <span class="subsection">Awards</span>
+              <ul>
                 <li>
                   06/2025: <a href="https://www.mpg.de/prizes/otto-hahn-medal"> Otto-Hahn-Medal</a> (PhD Thesis Award), Max-Planck-Gesellschaft
                 </li>
-              <li>
+                <li>
                   07/2021: <a href="https://www.informatik.uni-bonn.de/de/gleichstellung/talents"> Grace-Hopper-Award</a> (Master Thesis Award), Uni Bonn
                 </li>
-              <li>
-                  ECCV 2020: Coorganizing the <a href="https://sites.google.com/view/wicvworkshop-eccv2020/home"> WiCV workshop</a>, Virtual
+                <li>
+                  10/2025: Reviewer of the Month: <a href="https://www.nature.com/commseng/referees/reviewer-of-the-month">Nature CommsEng</a>
                 </li>
-              <li>
-                  CVPR 2024: Coorganizing workshop <a href="https://sites.google.com/view/lpvl-cvpr2024">"Learning from Procedural Videos and Language: What is Next?"</a>, Seattle
+                <li>
+                  Top Reviewer: AISTAT23, NeurIPS23, CVPR24
+                </li>
+              </ul>
+
+              <span class="subsection">Organizing</span>
+              <ul>
+                <li>
+                  Doctoral Consortium Chair: ICCV 2025
+                </li>
+                <li>
+                  ECCV 2026: Coorganizing workshop <a href="https://mllm-mucg.github.io/ECCV2026/">"MUCG: Multimodal Large Language Models for Unified Comprehension and Generation"</a>, Malmö
+                </li>
+                <li>
+                  CVPR 2026: Coorganizing workshop <a href="">BigMAC</a>, Denver
+                </li>
+                <li>
+                  NeurIPS 2025: Coorganizing workshop <a href="https://what-makes-good-video.github.io/">"(NextVid) What Makes a Good Video: Next Practices in Video Generation and Evaluation"</a>, Nashville
                 </li>
                 <li>
                   CVPR 2025: Coorganizing workshop <a href="https://sites.google.com/view/mmfm3rdworkshop">"MMFM3: The 3rd Workshop on What is Next in Multimodal Foundation Models?"</a>, San Diego
                 </li>
                 <li>
-                  NeurIPS 2025: Coorganizing workshop <a href="https://what-makes-good-video.github.io/">"(NextVid) What Makes a Good Video: Next Practices in Video Generation and Evaluation"</a> , Nashville
+                  CVPR 2024: Coorganizing workshop <a href="https://sites.google.com/view/lpvl-cvpr2024">"Learning from Procedural Videos and Language: What is Next?"</a>, Seattle
                 </li>
                 <li>
-                  CVPR 2026: Coorganizing workshop <a href="">BigMAC</a> , Denver
+                  ECCV 2020: Coorganizing the <a href="https://sites.google.com/view/wicvworkshop-eccv2020/home"> WiCV workshop</a>, Virtual
                 </li>
               </ul>
               </p>
